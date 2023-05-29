@@ -1,0 +1,13 @@
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+df = pd.read_excel('iris.xlsx', sheet_name='Page1') # Excel file data input
+
+sns.set(style='ticks', palette=['r', 'b', 'g']) # Color setting change.
+#data = pd.DataFrame({'y1': y1, 'y2': y2, 'y3': y3, 'y4': y4, 'species': df['species']})
+data = pd.DataFrame({'sepal_length': df.iloc[:, 0], 'sepal_width': df.iloc[:, 1], 'petal_length': df.iloc[:, 2], 'petal_width': df.iloc[:, 3], 'species': df['species']})
+
+sns.pairplot(data, hue='species', diag_kind='hist')
+
+plt.show()
